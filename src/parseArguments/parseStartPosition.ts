@@ -13,7 +13,12 @@ const assertsStartPosition: Asserts<
   if (value.length !== 3) {
     throw Error('Invalid starting position, e.g. "1 2 N".');
   }
-  if (typeof value[0] !== "number" || typeof value[1] !== "number") {
+  if (
+    typeof value[0] !== "number" ||
+    typeof value[1] !== "number" ||
+    Number.isNaN(value[0]) ||
+    Number.isNaN(value[1])
+  ) {
     throw Error("Invalid coordinates, coordinates must be numbers.");
   }
   if (value[0] > maxCoordinates.x || value[1] > maxCoordinates.y) {
